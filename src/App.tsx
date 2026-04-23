@@ -93,6 +93,7 @@ interface VideoProps {
 
 const VideoCard: React.FC<VideoProps> = ({ video, idx, onSelect }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [loadError, setLoadError] = useState(false);
 
   return (
     <motion.div
@@ -122,11 +123,16 @@ const VideoCard: React.FC<VideoProps> = ({ video, idx, onSelect }) => {
           loop
           playsInline
           preload="auto"
-          onLoadedData={() => console.log('Video loaded:', video.src)}
-          onError={() => console.error('Video load fail:', video.src)}
+          onError={() => setLoadError(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-cool-black/40 via-transparent to-transparent opacity-40 transition-opacity" />
       </div>
+
+      {loadError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-red-500/10">
+          <span className="text-[8px] text-red-400 font-bold">LOAD ERROR</span>
+        </div>
+      )}
 
       <div className="absolute top-4 left-4 flex items-center justify-center w-6 h-6 bg-white/20 backdrop-blur-md rounded-lg border border-white/30 text-white text-[10px] font-bold">
         {video.id}
@@ -151,23 +157,33 @@ interface ImageProps {
   onSelect: (image: { name: string; src: string }) => void;
 }
 
-const ImageCard: React.FC<ImageProps> = ({ image, idx, onSelect }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: idx * 0.05 }}
-    whileHover={{ y: -4 }}
-    onClick={() => onSelect(image)}
-    className="relative aspect-square bg-white/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-white/10 cursor-pointer"
-  >
-    <img 
-      src={image.src} 
-      alt={image.name}
-      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-      loading="lazy"
-    />
-  </motion.div>
-);
+const ImageCard: React.FC<ImageProps> = ({ image, idx, onSelect }) => {
+  const [loadError, setLoadError] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: idx * 0.05 }}
+      whileHover={{ y: -4 }}
+      onClick={() => onSelect(image)}
+      className="relative aspect-square bg-white/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-white/10 cursor-pointer"
+    >
+      <img 
+        src={image.src} 
+        alt={image.name}
+        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        loading="lazy"
+        onError={() => setLoadError(true)}
+      />
+      {loadError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-red-500/10">
+          <span className="text-[8px] text-red-400 font-bold italic uppercase">Load Fail</span>
+        </div>
+      )}
+    </motion.div>
+  );
+};
 
 export default function App() {
   const [lang, setLang] = useState<Language>('JP');
@@ -366,7 +382,7 @@ export default function App() {
       <footer className="mt-60 px-6 max-w-6xl mx-auto text-center">
         <div className="h-px bg-white/5 mb-20" />
         <p className="text-[9px] text-white/20 font-bold uppercase tracking-[0.4em]">
-          © 2026 ONIKA STUDIO / ARTWORK BY ONIKA / INSPIRED BY EDDSWORLD / V1.0.3
+          © 2026 ONIKA STUDIO / ARTWORK BY ONIKA / INSPIRED BY EDDSWORLD / V1.0.4
         </p>
       </footer>
     </div>
