@@ -50,23 +50,23 @@ const TRANSLATIONS = {
 };
 
 const VIDEOS = [
-  { id: 0, title: "Special Preview", src: "/v0.mp4" },
-  { id: 1, title: "Eddsworld Animation #01", src: "/v1.mp4" },
-  { id: 2, title: "Eddsworld Animation #02", src: "/v2.mp4" },
-  { id: 3, title: "Eddsworld Animation #03", src: "/v3.mp4" },
-  { id: 4, title: "Eddsworld Animation #04", src: "/v4.mp4" },
-  { id: 5, title: "Eddsworld Animation #05", src: "/v5.mp4" },
-  { id: 6, title: "Eddsworld Animation #06", src: "/v6.mp4" },
-  { id: 7, title: "Eddsworld Animation #07", src: "/v7.mp4" },
-  { id: 8, title: "Eddsworld Animation #08", src: "/v8.mp4" },
-  { id: 9, title: "Eddsworld Animation #09", src: "/v9.mp4" },
-  { id: 10, title: "Eddsworld Animation #10", src: "/v10.mp4" },
-  { id: 11, title: "Eddsworld Animation #11", src: "/v11.mp4" },
-  { id: 12, title: "Eddsworld Animation #12", src: "/v12.mp4" },
-  { id: 13, title: "Eddsworld Animation #13", src: "/v13.mp4" },
-  { id: 14, title: "Eddsworld Animation #14", src: "/v14.mp4" },
-  { id: 15, title: "Eddsworld Animation #15", src: "/v15.mp4" },
-  { id: 16, title: "Eddsworld Animation #16", src: "/v16.mp4" },
+  { id: 0, title: "Special Preview", src: "./v0.mp4" },
+  { id: 1, title: "Eddsworld Animation #01", src: "./v1.mp4" },
+  { id: 2, title: "Eddsworld Animation #02", src: "./v2.mp4" },
+  { id: 3, title: "Eddsworld Animation #03", src: "./v3.mp4" },
+  { id: 4, title: "Eddsworld Animation #04", src: "./v4.mp4" },
+  { id: 5, title: "Eddsworld Animation #05", src: "./v5.mp4" },
+  { id: 6, title: "Eddsworld Animation #06", src: "./v6.mp4" },
+  { id: 7, title: "Eddsworld Animation #07", src: "./v7.mp4" },
+  { id: 8, title: "Eddsworld Animation #08", src: "./v8.mp4" },
+  { id: 9, title: "Eddsworld Animation #09", src: "./v9.mp4" },
+  { id: 10, title: "Eddsworld Animation #10", src: "./v10.mp4" },
+  { id: 11, title: "Eddsworld Animation #11", src: "./v11.mp4" },
+  { id: 12, title: "Eddsworld Animation #12", src: "./v12.mp4" },
+  { id: 13, title: "Eddsworld Animation #13", src: "./v13.mp4" },
+  { id: 14, title: "Eddsworld Animation #14", src: "./v14.mp4" },
+  { id: 15, title: "Eddsworld Animation #15", src: "./v15.mp4" },
+  { id: 16, title: "Eddsworld Animation #16", src: "./v16.mp4" },
 ];
 
 const IMAGES = [
@@ -76,7 +76,7 @@ const IMAGES = [
   "IMG_1647.jpg", "IMG_1648.jpg", "IMG_1651.jpg", "IMG_1653.jpg", "IMG_1654.jpg",
   "IMG_1655.jpg", "IMG_1656.jpg", "IMG_1657.jpg", "IMG_1658.jpg", "IMG_1659.jpg",
   "IMG_1660.jpg"
-].map(name => ({ name, src: `/${name}` }));
+].map(name => ({ name, src: `./${name}` }));
 
 const EddsworldColorBadge = ({ color, name }: { color: string, name: string }) => (
   <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 shadow-sm">
@@ -382,7 +382,7 @@ export default function App() {
       <footer className="mt-60 px-6 max-w-6xl mx-auto text-center">
         <div className="h-px bg-white/5 mb-20" />
         <p className="text-[9px] text-white/20 font-bold uppercase tracking-[0.4em]">
-          © 2026 ONIKA STUDIO / ARTWORK BY ONIKA / INSPIRED BY EDDSWORLD / V1.0.4
+          © 2026 ONIKA STUDIO / ARTWORK BY ONIKA / INSPIRED BY EDDSWORLD / V1.0.5
         </p>
       </footer>
     </div>
